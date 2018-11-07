@@ -1,10 +1,13 @@
+require("dotenv").config();
+const keys = require("\.keys.js");
+const Spotify = require("node-spotify-api");
+const spotify = new Spotify(keys.spotify);
 
 
 
 
 
-
-
+const input = process.argv[2];
 
 
 switch (input) {
@@ -24,5 +27,5 @@ function spotifyThisSong() {
 }
 
 function concertThis() {
-    
+
 }
