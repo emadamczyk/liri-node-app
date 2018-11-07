@@ -1,5 +1,5 @@
 require("dotenv").config();
-const keys = require("\.keys.js");
+const keys = require("./keys.js");
 const Spotify = require("node-spotify-api");
 const spotify = new Spotify(keys.spotify);
 const request = require("request");
@@ -10,21 +10,23 @@ const fs = require("fs");
 
 
 
-
+const command = process.argv[2];
+//console.log(command);
 const inputArgs = process.argv;
 let input = "";
 //console.log(inputArgs.slice(2).join(" "));
-input = inputArgs.slice(2).join(" ")
+input = inputArgs.slice(3).join(" ")
 //console.log(input);
 logThis();
 
 // Use switch to handle the chosen input from user
-switch (input) {
+switch (command) {
     case "concert-this":
         concertThis(); 
         break;
     case "spotify-this-song":
         spotifyThisSong(); 
+        break;
     case "movie-this":
         movieThis(); 
         break;
@@ -64,9 +66,6 @@ function concertThis() {
 function spotifyThisSong() {
     spotify.search({type: 'track', query: input}, function(err, data){
         //console.log(data.tracks.items[0]);
-                
-    
-        // spotLog.push("SPOTIFY LOG-------"); //push to log.txt
         
         if(err){
             return console.log('Error occured' + err);
@@ -77,9 +76,6 @@ function spotifyThisSong() {
         console.log("--------------------");
         console.log(`Artist: ${topResponse.artists[0].name}\nSong Name: ${topResponse.name}\nPreview Link: ${topResponse.preview_url}\nAlbum: ${topResponse.album.name}`);
         console.log("--------------------");
-    
-        
-        // log(spotLog);
     });
 };
 

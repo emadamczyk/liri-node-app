@@ -19,9 +19,6 @@ input = inputArgs.slice(2).join("+")
 
 spotify.search({type: 'track', query: input}, function(err, data){
     //console.log(data.tracks.items[0]);
-			
-
-    // spotLog.push("SPOTIFY LOG-------"); //push to log.txt
     
     if(err){
         return console.log('Error occured' + err);
@@ -32,8 +29,5 @@ spotify.search({type: 'track', query: input}, function(err, data){
     console.log("--------------------");
     console.log(`Artist: ${topResponse.artists[0].name}\nSong Name: ${topResponse.name}\nPreview Link: ${topResponse.preview_url}\nAlbum: ${topResponse.album.name}`);
     console.log("--------------------");
-
-    
-    // log(spotLog);
 });
   
