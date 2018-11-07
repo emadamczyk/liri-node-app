@@ -120,26 +120,29 @@ function doWhatItSays() {
         if (error) {
             return console.log(error);
         }
-  
         // print the contents of data
         //console.log(data);
-  
         // Then split it by commas (to make it more readable)
         let dataArr = data.split(",");
+        input = dataArr[1];
+        console.log(input);
   
         // display the content as an array for later use
-        console.log(dataArr);
+        //console.log(dataArr);
   
-        dataArr.forEach(function(title) { 
-            console.log(title)
-        });
-  
+        if (dataArr[0] === "spotify-this-song") {
+            spotifyThisSong();
+        } else if (dataArr[0] === "concert-this") {
+            concertThis();
+        } else if (dataArr[0] === "movie-this") {
+            movieThis();
+        }
     });
 };    
 
 //Bonus - Log each command to the log.txt file
 function logThis() {
-    fs.appendFile("log.txt", `,${input}`, function(err) {
+    fs.appendFile("log.txt", `,${input}`, function(err) {   
 
         // If an error was experienced we will log it.
         if (err) {
