@@ -10,5 +10,5 @@ exports.omdb = {
 };
 
 exports.bands = {
-  id: process.env.codingbootcamp
+  id: process.env.api_id
 };

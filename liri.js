@@ -4,6 +4,7 @@ const Spotify = require("node-spotify-api");
 const spotify = new Spotify(keys.spotify);
 const request = require("request");
 const moment = require("moment");
+moment().format();
 const fs = require("fs");
 
 
@@ -13,7 +14,7 @@ const fs = require("fs");
 const inputArgs = process.argv;
 let input = "";
 console.log(inputArgs.slice(2).join(" "));
-input = inputArgs.slice(2).join("+")
+input = inputArgs.slice(2).join(" ")
 console.log(input);
 
 // Use switch to handle the chosen input from user
