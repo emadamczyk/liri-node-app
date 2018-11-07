@@ -41,6 +41,9 @@ switch (command) {
 //Concerts - node liri.js concert-this <artist/band name here>
 //Searches Bands in Town for an artist and render the following information about each event to the terminal: Name of the venue, Venue location, Date of the Event (uses moment to format this as "MM/DD/YYYY")
 function concertThis() {
+    if (input === undefined || input === null || input === "") {
+        input = "Bon Jovi";
+    }
     let queryUrl = "https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp";
     //console.log(queryUrl);
     request(queryUrl, function(error, response, body) {
@@ -55,8 +58,8 @@ function concertThis() {
             console.log(`Date: ${moment(concertThisBand.datetime).format("MM/DD/YYYY")}`);
             console.log("--------------------");
               
-    }
-  });
+        } 
+    });
 };
 
 //Songs - node liri.js spotify-this-song '<song name here>'
@@ -64,6 +67,9 @@ function concertThis() {
 //The album that the song is from
 //default to "The Sign" by Ace of Base
 function spotifyThisSong() {
+    if (input === undefined || input === null || input === "") {
+        input = "Ace of Base The Sign";
+    }
     spotify.search({type: 'track', query: input}, function(err, data){
         //console.log(data.tracks.items[0]);
         
@@ -83,6 +89,9 @@ function spotifyThisSong() {
 //Output - Title of the movie, Year the movie came out, IMDB Rating of the movie, Rotten Tomatoes Rating of the movie, Country where the movie was produced, Language of the movie, Plot of the movie, Actors in the movie
 //default - output data for the movie 'Mr. Nobody'
 function movieThis() {
+    if (input === undefined || input === null || input === "") {
+        input = "Mr. Nobody";
+    }
     // Run a request to the OMDB API with the movie specified
     let queryUrl = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy";
     //console.log(queryUrl);

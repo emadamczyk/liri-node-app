@@ -17,8 +17,8 @@ let input = "";
 input = inputArgs.slice(2).join("+")
 //console.log(input);
 
-spotify.search({type: 'track', query: input}, function(err, data){
-    //console.log(data.tracks.items[0]);
+spotify.search({type: 'track', query: input, limit: 10}, function(err, data){
+    console.log(data.tracks.items);
     
     if(err){
         return console.log('Error occured' + err);
